@@ -1,0 +1,16 @@
+{
+  "name": "program2",
+  "version": "1.0.0",
+  "description": "Multi stage docker file",
+  "main": "dist/file.js",
+  "scripts": {
+    "start": "node dist/file.js",
+    "build": "mkdir -p dist && cp -r src/* dist/"
+  },
+  "author": "MTS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
