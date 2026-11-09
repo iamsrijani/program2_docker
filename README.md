@@ -173,3 +173,211 @@ CMD ["node", "dist/file.js"]
 ```
 
 Save the file
+
+## 6. Build the Docker Image
+
+Execute the following command:
+
+```bash
+docker build -t program2 .
+```
+
+Here:
+- `docker build` – Builds a Docker image.
+- `-t program2` – Gives the image the name `program2`.
+- `.` – Uses the current directory as the build context.
+
+Check the created image:
+
+```bash
+docker images
+```
+
+## 7. Run the Docker Container
+
+Execute:
+
+```bash
+docker run -d -p 3000:3000 --name prog2 program2
+```
+
+Here:
+- `-d` – Runs the container in background mode.
+- `-p 3000:3000` – Maps host port 3000 to container port 3000.
+- `--name prog2` – Assigns the container name `prog2`.
+- `program2` – Specifies the Docker image.
+
+## 8. Check the Running Container
+
+Execute:
+
+```bash
+docker ps
+```
+
+The `prog2` container should appear in the list of running containers.
+
+Expected output:
+
+```text
+CONTAINER ID   IMAGE      STATUS       PORTS
+xxxxxxxxxxxx   program2   Up           0.0.0.0:3000->3000/tcp
+```
+
+## 9. Check Docker Logs
+
+Execute:
+
+```bash
+docker logs prog2
+```
+
+Expected output:
+
+```text
+Multi stage docker running on port 3000
+```
+
+## 10. Test the Application
+
+Open the browser and enter:
+
+```text
+http://localhost:3000
+```
+
+Expected output:
+
+```text
+Hello from multi stage docker
+```
+
+The application can also be tested using the terminal:
+
+```bash
+curl http://localhost:3000
+```
+
+Expected output:
+
+```text
+Hello from multi stage docker
+```
+
+## 11. Stop the Container
+
+To stop the running container:
+
+```bash
+docker stop prog2
+```
+
+Check the running containers:
+
+```bash
+docker ps
+```
+
+The stopped container will no longer appear in the running-container list.
+
+## 12. Start the Container Again
+
+To restart the stopped container:
+
+```bash
+docker start prog2
+```
+
+Check:
+
+```bash
+docker ps
+```
+
+The container should be running again.
+
+## 13. Useful Docker Commands
+
+**List Docker Images**
+
+```bash
+docker images
+```
+
+**List Running Containers**
+
+```bash
+docker ps
+```
+
+**List All Containers**
+
+```bash
+docker ps -a
+```
+
+**View Container Logs**
+
+```bash
+docker logs prog2
+```
+
+**Stop Container**
+
+```bash
+docker stop prog2
+```
+
+**Start Container**
+
+```bash
+docker start prog2
+```
+
+**Remove Container**
+
+```bash
+docker rm prog2
+```
+
+**Remove Docker Image**
+
+```bash
+docker rmi program2
+```
+
+## 14. Complete Execution Commands
+
+If all the project files have already been created, execute:
+
+```bash
+npm install
+docker build -t program2 .
+docker run -d -p 3000:3000 --name prog2 program2
+docker ps
+docker logs prog2
+```
+
+Open the browser:
+
+```text
+http://localhost:3000
+```
+
+Expected output:
+
+```text
+Hello from multi stage docker
+```
+
+## 15. Result
+
+The Node.js Express application was successfully containerized using a **multi-stage Dockerfile**. The Docker image was built and the container was executed successfully on port 3000.
+
+The application displayed the output:
+
+```text
+Hello from multi stage docker
+```
+
+Thus, the multi-stage Docker file for container orchestration was successfully implemented.
